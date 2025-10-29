@@ -2,7 +2,7 @@ import { ErrorRequestHandler, Response } from 'express';
 // import { ZodError } from 'zod';
 import { HTTPSTATUS } from '../config/http.config';
 import { AppError } from '../utils/app-error';
-// import { logger } from '../utils/logger';
+import { logger } from '../utils/logger';
 import { ErrorCodeEnum } from '../enums/error-code.enum';
 import { error, log } from 'console';
 
@@ -14,7 +14,7 @@ export const errorHandler: ErrorRequestHandler = (
   res,
   next,
 ): any => {
-    console.log(`Error occured on PATH:${req.path}`,{
+    logger.error(`Error occured on PATH:${req.path}`,{
       body: req.body,
       params:req.params,
       error,

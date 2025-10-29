@@ -10,6 +10,7 @@ import { asyncHandler } from "./middlewares/asyncHandler.middleware";
 import { HTTPSTATUS } from "./config/http.config";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import { log } from "console";
+import { logger } from "./utils/logger";
 
 const app=express();
 const BASE_PATH=Env.BASE_PATH;
@@ -48,30 +49,30 @@ app.use(errorHandler);
 async function startServer(){
     try {
         const server=app.listen(Env.PORT,()=>{
-            console.log(`server is listening on port ${Env.PORT} in ${Env.NODE_ENV} mode`,)           
+            logger.info(`server is listening on port ${Env.PORT} in ${Env.NODE_ENV} mode`,)           
         })
         const shutdownSingnals:NodeJS.Signals[]=['SIGTERM','SIGINT'];
 
         shutdownSingnals.forEach((signal)=>{
             process.on(signal,async()=>{
-                console.log(`${signal} recieved: shutting down server gracefully`);
+                logger.info(`${signal} recieved: shutting down server gracefully`);
 
                 try {
                 server.close(()=>{
-                    console.log(`HTTP server closed successfully`)
+                    logger.info(`HTTP server closed successfully`)
                 })
 
                 //disconnect db
                 process.exit(0);
             } catch (error) {
-                console.error(`Error occured during server shutdown`,error);
+                logger.error(`Error occured during server shutdown`,error);
                 process.exit(1);
             }
             });
             
         })
     } catch (error) {
-        console.error(`Failed to start server`,error)
+        logger.error(`Failed to start server`,error)
         process.exit(1);
     }
 }
