@@ -2,7 +2,7 @@ import { ErrorRequestHandler, Response } from 'express';
 // import { ZodError } from 'zod';
 import { HTTPSTATUS } from '../config/http.config';
 import { AppError } from '../utils/app-error';
-import { logger } from '../utils/logger';
+// import { logger } from '../utils/logger';
 import { ErrorCodeEnum } from '../enums/error-code.enum';
 import { error, log } from 'console';
 

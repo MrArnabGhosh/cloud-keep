@@ -12,6 +12,11 @@ const envConfig = () => ({
 
   LOG_LEVEL: getEnv('LOG_LEVEL', 'info'),
 
+  ALLOWED_ORIGINS: getEnv(
+    'ALLOWED_ORIGINS',
+    // 'https://uploadnest-alpha.vercel.app',
+  ),
+
 });
 
 export const Env = envConfig();
