@@ -11,6 +11,7 @@ import { HTTPSTATUS } from "./config/http.config";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import { log } from "console";
 import { logger } from "./utils/logger";
+import { connectDatabase, disConnectDatabase } from "./config/database.config";
 
 const app=express();
 const BASE_PATH=Env.BASE_PATH;
@@ -48,6 +49,7 @@ app.use(errorHandler);
 
 async function startServer(){
     try {
+        await connectDatabase()
         const server=app.listen(Env.PORT,()=>{
             logger.info(`server is listening on port ${Env.PORT} in ${Env.NODE_ENV} mode`,)           
         })
@@ -63,6 +65,7 @@ async function startServer(){
                 })
 
                 //disconnect db
+                await disConnectDatabase()
                 process.exit(0);
             } catch (error) {
                 logger.error(`Error occured during server shutdown`,error);
