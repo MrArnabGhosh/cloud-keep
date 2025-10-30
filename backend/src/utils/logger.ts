@@ -1,6 +1,5 @@
-import winston, { http, verbose } from 'winston';
+import winston from 'winston';
 import {Env} from '../config/env.config'
-import { time, warn } from 'console';
 const {combine,colorize,timestamp,json, errors,printf}=winston.format;
 const transports:winston.transport[]=[];
 
