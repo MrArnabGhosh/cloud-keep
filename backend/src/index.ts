@@ -12,6 +12,7 @@ import { errorHandler } from "./middlewares/errorHandler.middleware";
 import { log } from "console";
 import { logger } from "./utils/logger";
 import { connectDatabase, disConnectDatabase } from "./config/database.config";
+import internalRoutes from "./routes/internal";
 
 const app=express();
 const BASE_PATH=Env.BASE_PATH;
@@ -45,6 +46,8 @@ app.get(
   }),
 );
 
+
+app.use(`${BASE_PATH}`,internalRoutes)
 app.use(errorHandler);
 
 async function startServer(){

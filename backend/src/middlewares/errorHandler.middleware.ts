@@ -4,9 +4,20 @@ import { HTTPSTATUS } from '../config/http.config';
 import { AppError } from '../utils/app-error';
 import { logger } from '../utils/logger';
 import { ErrorCodeEnum } from '../enums/error-code.enum';
-import { error, log } from 'console';
+import { ZodError } from 'zod';
 
+const formatZodError = (res: Response, error: ZodError) => {
+  const errors = error?.issues?.map((err) => ({
+    field: err.path.join('.'),
+    message: err.message,
+  }));
 
+  return res.status(HTTPSTATUS.BAD_REQUEST).json({
+    message: 'Validation failed',
+    errors: errors,
+    errorCode: ErrorCodeEnum.VALIDATION_ERROR,
+  });
+};
 
 export const errorHandler: ErrorRequestHandler = (
   error,
@@ -28,6 +39,10 @@ export const errorHandler: ErrorRequestHandler = (
       });
 
     }
+
+     if (error instanceof ZodError) {
+    return formatZodError(res, error);
+  }
 
 
 

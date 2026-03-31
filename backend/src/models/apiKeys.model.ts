@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Schema, Types, model, Document, Model } from 'mongoose';
+import { Schema, Types, Document, Model } from 'mongoose';
 
 export interface ApiKeyDocument extends Document {
   userId: Types.ObjectId;

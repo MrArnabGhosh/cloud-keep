@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 import { Schema, Types, Model } from "mongoose";
 import { format } from "path";
-import { formatBytes } from "src/utils/format-bytes";
+import { formatBytes } from "../utils/format-bytes";
 export enum UploadSourceEnum{
     WEB='WEB',
     API='API'
