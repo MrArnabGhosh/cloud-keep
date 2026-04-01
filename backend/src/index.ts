@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "./config/passport.config"
 import express from "express"
 import { Request, Response } from "express";
 import { Env } from "./config/env.config";
@@ -13,6 +14,7 @@ import { log } from "console";
 import { logger } from "./utils/logger";
 import { connectDatabase, disConnectDatabase } from "./config/database.config";
 import internalRoutes from "./routes/internal";
+import passport from "passport";
 
 const app=express();
 const BASE_PATH=Env.BASE_PATH;
@@ -35,6 +37,7 @@ app.use(cors(corsOptions));
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(helmet())
+app.use(passport.initialize());
 
 //home route
 app.get(
@@ -60,11 +63,11 @@ async function startServer(){
 
         shutdownSingnals.forEach((signal)=>{
             process.on(signal,async()=>{
-                logger.info(`${signal} recieved: shutting down server gracefully`);
+                logger.warn(`${signal} recieved: shutting down server gracefully`);
 
                 try {
                 server.close(()=>{
-                    logger.info(`HTTP server closed successfully`)
+                    logger.warn(`HTTP server closed successfully`)
                 })
 
                 //disconnect db

@@ -12,6 +12,11 @@ const envConfig = () => ({
 
   LOG_LEVEL: getEnv('LOG_LEVEL', 'info'),
 
+  AWS_ACCESS_KEY: getEnv('AWS_ACCESS_KEY'),
+  AWS_SECRET_KEY: getEnv('AWS_SECRET_KEY'),
+  AWS_REGION: getEnv('AWS_REGION', 'eu-north-1'),
+  AWS_S3_BUCKET: getEnv('AWS_S3_BUCKET', 'cloudkeepassest'),
+
   ALLOWED_ORIGINS: getEnv(
     'ALLOWED_ORIGINS',
     // 'https://uploadnest-alpha.vercel.app',
