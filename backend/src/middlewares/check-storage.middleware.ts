@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { BadRequestException, UnauthorizedException } from '../utils/app-error';
-import StorageModel from '../models/storage.model';
+import StorageModel from '../models/stroage.model';
 import { logger } from '../utils/logger';
 
 export const CheckStorageAvailability = async (

@@ -1,14 +1,14 @@
-import { Router } from 'express';
-import {
-  createApiKeyController,
-  deleteApiKeyController,
-  getAllApiKeysController,
-} from '../../controllers/apikey.controller';
+// import { Router } from 'express';
+// import {
+//   createApiKeyController,
+//   deleteApiKeyController,
+//   getAllApiKeysController,
+// } from '../../controllers/apikey.controller';
 
-const apikeyRoutes = Router();
+// const apikeyRoutes = Router();
 
-apikeyRoutes.post('/create', createApiKeyController);
-apikeyRoutes.get('/all', getAllApiKeysController);
-apikeyRoutes.delete('/:id', deleteApiKeyController);
+// apikeyRoutes.post('/create', createApiKeyController);
+// apikeyRoutes.get('/all', getAllApiKeysController);
+// apikeyRoutes.delete('/:id', deleteApiKeyController);
 
-export default apikeyRoutes;
+// export default apikeyRoutes;

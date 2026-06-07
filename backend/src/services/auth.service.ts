@@ -5,7 +5,7 @@ import {
 } from '../validators/auth.validator';
 import UserModel from '../models/user.model';
 import { NotFoundException, UnauthorizedException } from '../utils/app-error';
-import StorageModel from '../models/storage.model';
+import StorageModel from '../models/stroage.model';
 import { logger } from '../utils/logger';
 import { signJwtToken } from '../utils/jwt';
 

@@ -21,6 +21,7 @@ import {
 } from '@aws-sdk/client-s3';
 import { Env } from '../config/env.config';
 import { s3 } from '../config/aws-s3.config';
+import mongoose from 'mongoose';
 
 export const uploadFilesService = async (
   userId: string,
@@ -176,10 +177,13 @@ export const deleteFilesService = async (userId: string, fileIds: string[]) => {
   const session = await mongoose.startSession();
   try {
     
-  let result;
+  let result={
+    deletedCount: 0,
+    failedCount: 0,
+  }
 
    //  withTransaction handles the transaction, rollback
-  await session.withTransaction(() => {
+  await session.withTransaction(async() => {
     const files = await FileModel.find(
       { _id: { $in: fileIds }, userId,},
     ).session(session);
