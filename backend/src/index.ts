@@ -30,9 +30,12 @@ const corsOptions:CorsOptions={
             const errMsg= `CORS Error: Origin ${origin} is not allowedd`
             callback(new UnauthorizedException(errMsg),false)
         }
-    }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 };
-
+  
 app.use(cors(corsOptions));
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -59,9 +62,9 @@ async function startServer(){
         const server=app.listen(Env.PORT,()=>{
             logger.info(`server is listening on port ${Env.PORT} in ${Env.NODE_ENV} mode`,)           
         })
-        const shutdownSingnals:NodeJS.Signals[]=['SIGTERM','SIGINT'];
+        const shutdownSignals:NodeJS.Signals[]=['SIGTERM','SIGINT'];
 
-        shutdownSingnals.forEach((signal)=>{
+        shutdownSignals.forEach((signal)=>{
             process.on(signal,async()=>{
                 logger.warn(`${signal} recieved: shutting down server gracefully`);
 

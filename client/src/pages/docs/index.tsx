@@ -53,7 +53,7 @@ const Docs = () => {
                     background: backgroundColor,
                   }}
                 >
-                  {"npm install @uploadnest/client"}
+                  {"npm install @cloudkeep/client"}
                 </SyntaxHighlighter>
               </div>
             </CardContent>
@@ -76,10 +76,10 @@ const Docs = () => {
                     padding: "1rem",
                   }}
                 >
-                  {`import { UploadNestClient } from "@uploadnest/client";
+                  {`import { CloudKeepClient } from "@cloudkeep/client";
 
-const client = new UploadNestClient({
-  apiKey: process.env.UPLOADNEST_API_KEY, // Your API key
+const client = new CloudKeepClient({
+  apiKey: process.env.CLOUDKEEP_API_KEY, // Your API key
 });
 
 // Upload files
@@ -108,11 +108,11 @@ console.log(result.files);`}
                     padding: "1rem",
                   }}
                 >
-                  {`import { UploadNestClient } from "@uploadnest/client";
+                  {`import { CloudKeepClient } from "@cloudkeep/client";
 import fs from "fs";
 
-const client = new UploadNestClient({
-  apiKey: process.env.UPLOADNEST_API_KEY,
+const client = new CloudKeepClient({
+  apiKey: process.env.CLOUDKEEP_API_KEY,
 });
 
 // Upload from file path
@@ -149,9 +149,9 @@ await client.uploadFiles(buffer);`}
                     padding: "1rem",
                   }}
                 >
-                  {`import { UploadNestClient } from "@uploadnest/client";
+                  {`import { CloudKeepClient } from "@cloudkeep/client";
 
-const client = new UploadNestClient({
+const client = new CloudKeepClient({
   apiKey: "your-api-key",
   forceBrowser: true,
 });
@@ -197,13 +197,13 @@ function FileUpload() {
                   }}
                 >
                   {`// app/upload/page.tsx
-import { UploadNestClient } from "@uploadnest/client";
+import { CloudKeepClient } from "@cloudkeep/client";
 
 async function uploadAction(formData: FormData) {
   "use server";
 
-  const client = new UploadNestClient({
-    apiKey: process.env.UPLOADNEST_API_KEY!,
+  const client = new CloudKeepClient({
+    apiKey: process.env.CLOUDKEEP_API_KEY!,
     forceBrowser: true,
   });
 
@@ -235,7 +235,7 @@ async function uploadAction(formData: FormData) {
                     padding: "1rem",
                   }}
                 >
-                  {`import { ValidationError, UploadError } from "@uploadnest/client/errors";
+                  {`import { ValidationError, UploadError } from "@cloudkeep/client/errors";
 
 try {
   const result = await client.uploadFiles(files);
@@ -262,12 +262,12 @@ try {
               For detailed information on all methods, types, and advanced
               usage, visit the{" "}
               <a
-                href="https://www.npmjs.com/package/@uploadnest/client"
+                href="https://www.npmjs.com/package/@cloudkeep/client"
                 className="underline font-medium text-primary hover:text-red-700 dark:hover:text-red-400"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                @uploadnest/client package on npm
+                @cloudkeep/client package on npm
               </a>
               .
             </p>

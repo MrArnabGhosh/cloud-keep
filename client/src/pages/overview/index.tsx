@@ -7,7 +7,7 @@ const Overview = () => {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="break-normal font-medium text-lg sm:text-xl">
-            🎉 Welcome, you've got a place to store files!
+            🎉 Welcome , you've got a place to store files!
           </h1>
           <h2 className="text-muted-foreground text-xs sm:text-sm">
             Like, lots and lots of files. So many files!
