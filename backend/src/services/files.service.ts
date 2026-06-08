@@ -264,7 +264,7 @@ async function handleMultipleFilesDownload(
 
   const zipKey = `temp-zips/${userId}/${timestamp}.zip`;
 
-  const zipFilename = `uploadnest-${timestamp}.zip`;
+  const zipFilename = `cloudkeep-${timestamp}.zip`;
 
   const zip = archiver('zip', { zlib: { level: 6 } });
 
