@@ -6,7 +6,7 @@ import { formatBytes } from "../utils/format-bytes";
 import { ErrorCodeEnum } from "../enums/error-code.enum";
 
 
-export const STORAGE_QUOTA=2*1024*1204*1024; //2GB
+export const STORAGE_QUOTA=2*1024*1024*1024; //2GB
 
 interface ISstogare{
     userId:Types.ObjectId;
@@ -54,7 +54,7 @@ const StorageSchema = new Schema<StorageDocument,StorageModelType>({
 ); 
 
 StorageSchema.statics={
-    async getStorageMatrics(userId:Types.ObjectId){
+    async getStorageMatrics(userId:Types.ObjectId){ 
         const storage = await this.findOne({userId}).lean();
        if(!storage) throw new NotFoundException("Storage record not found");
        const usage = await FileModel.calculateUsage(userId);

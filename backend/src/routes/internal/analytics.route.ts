@@ -1,8 +1,8 @@
-// import { Router } from 'express';
-// import { getUserAnalyticsWithChartController } from '../../controllers/analytics.controller';
+import { Router } from 'express';
+import { getUserAnalyticsWithChartController } from '../../controllers/analytics.controller';
 
-// const analyticsRoutes = Router();
+const analyticsRoutes = Router();
 
-// analyticsRoutes.get('/user', getUserAnalyticsWithChartController);
+analyticsRoutes.get('/user', getUserAnalyticsWithChartController);
 
-// export default analyticsRoutes;
+export default analyticsRoutes;
